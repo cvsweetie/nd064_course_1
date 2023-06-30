@@ -4,3 +4,8 @@
 .myvenv/
 __pycache__/
 .vagrant/
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/nd064_course_1.iml
+/.idea/vcs.xml
