@@ -1,0 +1,45 @@
+# Default values for techtrends.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+namespace:
+  name: sandbox
+
+replicaCount: 1
+
+image:
+  repository: cvsweetie/techtrends
+  tag: latest
+  pullPolicy: IfNotPresent
+  
+
+service:
+  type: ClusterIP
+  port: 4111
+  targetport: 3111
+  protocol: TCP
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  requests:
+     cpu: 250m
+     memory: 64Mi
+  limits:
+     cpu: 500m
+     memory: 128Mi
+
+  containerPort: 3111
+
+  livenessProbe:
+    path: /healthz
+
+  readinessProbe:
+    path: /healthz
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
