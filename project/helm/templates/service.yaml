@@ -8,10 +8,10 @@ metadata:
   namespace: {{ .Values.namespace.name }}
 spec:
   ports:
-  - name: 4111-3111
-    port: {{ .Values.service.port }}
+  - name: myports 
+    port: {{ .Values.service.port | quote }}
     protocol: {{ .Values.service.protocol }}
-    targetPort: {{ .Values.service.targetport }}
+    targetPort: {{ .Values.service.targetport | quote }}
   selector:
     app: techtrends
   type: {{ .Values.service.type }}
