@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-	  imagePullPolicy: {{ .Values.image.imagePullPolicy }}
+          imagePullPolicy: {{ .Values.image.imagePullPolicy }}
           name: techtrends
           resources:
             requests:
