@@ -24,20 +24,20 @@ spec:
           name: techtrends
           resources:
             requests:
-              cpu: {{ .Values.reources.requests.cpu }}
+              cpu: {{ .Values.resources.requests.cpu }}
               memory: {{ .Values.resources.requests.memory }}
             limits:
               cpu: {{ .Values.resources.limits.cpu }}
               memory: {{ .Values.resources.limits.memory }}
           ports:
-            - containerPort: {{ .Values.containerPort | quote }}
+            - containerPort: {{ .Values.resources.containerPort | quote }}
           livenessProbe:
             httpGet:
-              path: {{ .Values.livenessProbe.path }}
-              port: {{ .Values.containerPort | quote }}
+              path: {{ .Values.resources.livenessProbe.path }}
+              port: {{ .Values.resources.containerPort | quote }}
           readinessProbe:
             httpGet:
-              path: {{ .Values.readinessProbe.path }}
-              port: {{ .Values.containerPort | quote }}
+              path: {{ .Values.resources.readinessProbe.path }}
+              port: {{ .Values.resources.containerPort | quote }}
 status: {}
 
