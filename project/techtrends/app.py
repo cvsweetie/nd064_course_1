@@ -31,9 +31,19 @@ app.config['SECRET_KEY'] = 'your secret key'
 #TEchtrend application healthz and metrics endpoints
 @app.route('/healthz')
 def healthz():
-    response = app.response_class(response=json.dumps({"result":"OK- Healthy"}),
+    try:
+        connection = sqlite3.connect('database.db')
+        posts = connection.execute('SELECT * FROM posts').fetchall()
+        response = app.response_class(response=json.dumps({"result":"OK- Healthy"}),
             status=200,
             mimetype='application/json')
+    except sqlite3.Error as error:   
+        response = app.response_class(response=json.dumps({"result":"ERROR- UnHealthy"}),
+            status=500,
+            mimetype='application/json')
+    finally:
+        if connection:
+            connection.close();
     app.logger.info('Healthz request successful')
     return response
 
