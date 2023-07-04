@@ -11,7 +11,11 @@ spec:
   - name: myports 
     port: {{ .Values.service.port }}
     protocol: {{ .Values.service.protocol }}
+    {{ if eq .Values.service.targetport nil }}
+    targetport: {{ .Values.service.port }}
+    {{ else }}
     targetPort: {{ .Values.service.targetport }}
+    {{ end }}
   selector:
     app: techtrends
   type: {{ .Values.service.type }}
