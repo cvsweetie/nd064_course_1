@@ -9,9 +9,9 @@ metadata:
 spec:
   ports:
   - name: myports 
-    port: {{ .Values.service.port | quote }}
+    port: {{ .Values.service.port }}
     protocol: {{ .Values.service.protocol }}
-    targetPort: {{ .Values.service.targetport | quote }}
+    targetPort: {{ .Values.service.targetport }}
   selector:
     app: techtrends
   type: {{ .Values.service.type }}
