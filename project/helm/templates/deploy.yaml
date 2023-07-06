@@ -34,10 +34,10 @@ spec:
           livenessProbe:
             httpGet:
               path: {{ .Values.resources.livenessProbe.path }}
-              port: {{ .Values.resources.containerPort }}
+              port: {{ .Values.resources.livenessProbe.port }}
           readinessProbe:
             httpGet:
               path: {{ .Values.resources.readinessProbe.path }}
-              port: {{ .Values.resources.containerPort }}
+              port: {{ .Values.resources.readinessProbe.port }}
 status: {}
 
